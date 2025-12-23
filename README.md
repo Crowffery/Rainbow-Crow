@@ -4,4 +4,4 @@ This repository hosts a public, static privacy policy page for Google Play Conso
 
 直接访问链接（已替换为本仓库路径）：https://crowffery.github.io/Rainbow-Crow/
 
-The policy covers the Basketball GOAT Android game by Rainbow Crow and includes required disclosures about data collection, usage, third-party services, children's privacy, data security, and contact details. The site uses only HTML and CSS, with no tracking scripts or backend services.
+The policy presents disclosures for Android apps distributed through Google Play by the individual developer Jeffery. The site uses only HTML and CSS, with no tracking scripts or backend services.
