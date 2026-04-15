@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainbow Crow | Brand Identity</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --obsidian: #050608;
+            --shadow: #0e1116;
+            --iridescent-1: #6a0dad; /* Violet */
+            --iridescent-2: #0000ff; /* Blue */
+            --iridescent-3: #008080; /* Teal */
+            --iridescent-4: #00ff00; /* Green */
+            --spectrum: linear-gradient(135deg, #4b0082, #0000ff, #00ced1, #00ff7f, #ffff00, #ff4500);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--obsidian);
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.05em;
+        }
+
+        /* Iridescent Background Effect */
+        .iridescent-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
+                        rgba(106, 13, 173, 0.1) 0%, 
+                        rgba(0, 0, 255, 0.05) 25%, 
+                        rgba(0, 128, 128, 0.03) 50%, 
+                        transparent 70%);
+            pointer-events: none;
+            transition: background 0.1s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin-bottom: 40px;
+        }
+
+        /* The Crow Logo SVG with Iridescent Mask */
+        .logo-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(0, 128, 128, 0.2));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .logo-text {
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 0;
+            background: linear-gradient(90deg, #fff, #888, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .logo-text::after {
+            content: "RAINBOW CROW";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--spectrum);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0.3;
+            filter: blur(8px);
+            animation: flow 8s linear infinite;
+        }
+
+        @keyframes flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Material Section */
+        .section {
+            padding: 120px 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .feather-material {
+            width: 100%;
+            height: 400px;
+            background: var(--shadow);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .feather-material::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 255, 255, 0.02) 2px,
+                rgba(255, 255, 255, 0.02) 4px
+            );
+            transform: rotate(25deg);
+        }
+
+        /* Shimmering Highlight */
+        .shimmer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                transparent 0%,
+                rgba(106, 13, 173, 0.1) 45%,
+                rgba(0, 206, 209, 0.2) 50%,
+                rgba(106, 13, 173, 0.1) 55%,
+                transparent 100%
+            );
+            background-size: 200% 200%;
+            animation: shimmer 10s infinite linear;
+            mix-blend-mode: overlay;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% -200%; }
+            100% { background-position: 200% 200%; }
+        }
+
+        .label {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--spectrum);
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            color: #000;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 24px;
+        }
+
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Scroll Progress */
+        #progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--spectrum);
+            z-index: 1000;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="progress"></div>
+    <div class="iridescent-bg" id="bg"></div>
+
+    <main>
+        <section class="hero">
+            <div class="logo-container">
+                <!-- SVG Crow Logo with Gradient Mask -->
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="crowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#080a0c;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#1a1d23;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#080a0c;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="iridGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgba(106, 13, 173, 0.4)" />
+                            <stop offset="50%" style="stop-color:rgba(0, 206, 209, 0.4)" />
+                            <stop offset="100%" style="stop-color:rgba(0, 255, 127, 0.4)" />
+                        </linearGradient>
+                    </defs>
+                    <!-- stylized Crow Silhouette -->
+                    <path d="M50 15 C30 15, 15 30, 15 50 C15 70, 30 85, 50 85 C60 85, 80 75, 85 50 C85 25, 60 15, 50 15 Z" fill="url(#crowGrad)" />
+                    <path d="M50 15 C30 15, 15 30, 15 50 C15 70, 30 85, 50 85 C60 85, 80 75, 85 50 C85 25, 60 15, 50 15 Z" fill="url(#iridGrad)" style="mix-blend-mode: color-dodge;" />
+                    <!-- Eye -->
+                    <circle cx="45" cy="35" r="2" fill="#fff" opacity="0.8" />
+                    <!-- Beak details -->
+                    <path d="M85 50 L65 45 L65 55 Z" fill="#000" />
+                </svg>
+            </div>
+            <h1 class="logo-text">RAINBOW CROW</h1>
+            <p style="max-width: 600px; color: #888; margin-top: 20px;">
+                Where darkness meets the full spectrum. A brand study of sacrifice, intelligence, and the hidden brilliance within.
+            </p>
+        </section>
+
+        <section class="section container">
+            <div class="grid">
+                <div class="feather-material">
+                    <div class="shimmer"></div>
+                    <!-- Internal "Feather" patterns -->
+                    <div style="position: absolute; width: 100%; height: 100%; background: radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 70%);"></div>
+                </div>
+                <div class="glass-panel">
+                    <span class="label">MATERIAL STUDY</span>
+                    <h2>Optical Reflection</h2>
+                    <p>Unlike pigment-based color, the Rainbow Crow's vibrant hues are <strong>structural</strong>. Thin-film interference on the microscopic barbs of the feather creates a shifting spectrum that reacts to the environment.</p>
+                    <p style="color: #888;">Our brand leverages this optical truth: the deeper the darkness, the more vivid the light appears.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container" style="text-align: center;">
+            <span class="label">CROW OBSIDIAN</span>
+            <h2 style="font-size: 3rem;">Resilience in Detail</h2>
+            <div style="display: flex; justify-content: space-around; margin-top: 60px;">
+                <div style="width: 200px;">
+                    <h3 style="color: var(--iridescent-1);">Depth</h3>
+                    <p style="font-size: 0.9rem; color: #777;">A base of non-reflective obsidian for ultimate focus.</p>
+                </div>
+                <div style="width: 200px;">
+                    <h3 style="color: var(--iridescent-3);">Spectrum</h3>
+                    <p style="font-size: 0.9rem; color: #777;">Dynamic gradients that respond to interaction.</p>
+                </div>
+                <div style="width: 200px;">
+                    <h3 style="color: var(--iridescent-4);">Wisdom</h3>
+                    <p style="font-size: 0.9rem; color: #777;">Guided by the sacrifice of the legendary messenger.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Rainbow Crow Studio. Designed by Antigravity.</p>
+    </footer>
+
+    <script>
+        const bg = document.getElementById('bg');
+        const progress = document.getElementById('progress');
+
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            bg.style.setProperty('--x', `${x}%`);
+            bg.style.setProperty('--y', `${y}%`);
+        });
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progress.style.width = scrolled + "%";
+        });
+    </script>
+</body>
+</html>
